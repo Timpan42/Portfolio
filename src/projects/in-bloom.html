@@ -5,7 +5,7 @@ tags: "card"
 date: "2025-05-01"
 
 
-cardItem: 
+cardItem:
     mainPage: true
     title: In Bloom
     startDate: "2025/5"
@@ -18,28 +18,36 @@ cardItem:
     summaryOne: [
         "Third game project at FutureGames, a first person horror survival game in a post-apocalyptic world where nature has
         taken over."
-        ]
+    ]
     summaryTwo: Worked on the enemy combat and AI, also did UI Programming.
     url: /projects/in-bloom/
+    steamUrl: https://store.steampowered.com/app/4185520/?snr=1_5_9__205
     projectUrl: https://futuregames.itch.io/in-bloom
-    imageFileRoute: project_img/in-bloom 
-    imageUrl: /in-bloom-edit.webp 
+    imageFileRoute: project_img/in-bloom
+    imageUrl: /in-bloom-edit.webp
     topProjectUrl: videos/In-Bloom-Trailer_1080p.mp4
     topProjectUrlOrigin: https://www.youtube.com/watch?v=qm8phg69Ut4
 ---
 
 <article class="big-section">
     <section class="container project-top-content section">
-        <div>
+        <div class="test">
             <h1 class="center">{{ title }} </h1>
             <h3 class="center">Horror | FPS | Post-apocalyptic</h3>
             <p>A first person horror survival game in a post-apocalyptic world where nature has taken over.</p>
-            <p>Itch.io page: <a href="{{cardItem.projectUrl}}">{{cardItem.projectUrl}}</a></p>
+            <div class="project-pages-img">
+                <a href="{{cardItem.steamUrl}}">
+                <img src="/images/steam/steam_full_white.svg" alt="">
+                </a>
+                <a href="{{cardItem.projectUrl}}">
+                    <img src="/images/itchio/itchio-logo-textless-white.svg" alt="">
+                </a>
+            </div>
         </div>
         <video controls alt="">
             <source src="/{{ cardItem.topProjectUrl }}" type="video/mp4">
             {{ cardItem.topProjectUrlOrigin }}
-        </video>    
+        </video>
     </section>
 
     <section class="container flow">
@@ -47,9 +55,12 @@ cardItem:
             <div class="project-about-content project-text-padding">
                 <h3>Summary</h3>
                 <p>
-                    I primarily worked on AI, combat and UI programming. Used Unreal's behavior tree for AI and made sure that the enemy
-                    worked with the main combat mechanic. Also worked with the UI team to implement and connect UI with gameplay. I got
-                    better at managing time with a lot of tasks and a short deadline, taking ownership of features, and communicating in
+                    I primarily worked on AI, combat and UI programming. Used Unreal's behavior tree for AI and made
+                    sure that the enemy
+                    worked with the main combat mechanic. Also worked with the UI team to implement and connect UI with
+                    gameplay. I got
+                    better at managing time with a lot of tasks and a short deadline, taking ownership of features, and
+                    communicating in
                     a team.
                 </p>
             </div>
@@ -79,29 +90,40 @@ cardItem:
 
                 <h3>Introduction</h3>
                 <p>
-                    In Bloom is a first person survival horror game, set in a post-apocalyptic world where nature has taken over. The
-                    player needs to explore the world and gather items and survive nature's horrors to traverse levels.The player has a
+                    In Bloom is a first person survival horror game, set in a post-apocalyptic world where nature has
+                    taken over. The
+                    player needs to explore the world and gather items and survive nature's horrors to traverse
+                    levels.The player has a
                     gun to defend itself with, but little ammo available so fights need to be managed carefully.
                 </p>
                 <p>
-                    In this project my main working areas were: AI and combat programming - anything related to the enemy in the game
-                    was my responsibility to manage and program. UI programming - helping the UI team implement their UI and any
+                    In this project my main working areas were: AI and combat programming - anything related to the
+                    enemy in the game
+                    was my responsibility to manage and program. UI programming - helping the UI team implement their UI
+                    and any
                     features that they needed was my responsibility to fix and help with if needed.
                 </p>
                 <p>
-                    The AI uses Unreal's behavior tree and states to determine behavior, combining AI controllers and task nodes for
-                    execution. We used unreal's third person character as a base for movement, saving time on not making our own
-                    character controller. For combat I made sure that the enemy worked with the main combat mechanic in the game and
+                    The AI uses Unreal's behavior tree and states to determine behavior, combining AI controllers and
+                    task nodes for
+                    execution. We used unreal's third person character as a base for movement, saving time on not making
+                    our own
+                    character controller. For combat I made sure that the enemy worked with the main combat mechanic in
+                    the game and
                     that the enemies were easily balanceable without modifying code.
                 </p>
                 <p>
-                    I worked together with the UI team helping them with implementation and programming related features, setting up
-                    connections between what happens in the game with the UI. I worked on the main- and pause menu, making settings and
+                    I worked together with the UI team helping them with implementation and programming related
+                    features, setting up
+                    connections between what happens in the game with the UI. I worked on the main- and pause menu,
+                    making settings and
                     navigation consistent.
                 </p>
                 <p>
-                    I spent most of my time programming in blueprints mostly because it was fast to prototype features, and so others in
-                    the team had the possibility to edit and understand the code base, especially if they didn't have experience working
+                    I spent most of my time programming in blueprints mostly because it was fast to prototype features,
+                    and so others in
+                    the team had the possibility to edit and understand the code base, especially if they didn't have
+                    experience working
                     in C++.
                 </p>
             </div>
@@ -111,15 +133,18 @@ cardItem:
             <div class="project-content-background project-text-padding">
                 <h3>AI</h3>
                 <p>
-                    The enemy AI uses Unreal's Behavior Tree and AI controller in combination with task nodes and a Blackboard to create
-                    the enemies behavior. It also has an AI Perception component used for seeing and hearing noises the player makes.
+                    The enemy AI uses Unreal's Behavior Tree and AI controller in combination with task nodes and a
+                    Blackboard to create
+                    the enemies behavior. It also has an AI Perception component used for seeing and hearing noises the
+                    player makes.
                     The AI has different states It can be in:
                 </p>
                 <div class="project-side-by-side">
                     <div>
                         <p>
-                            Idle; standing in one place looking around waiting for a new event to execute a different behavior.
-                        
+                            Idle; standing in one place looking around waiting for a new event to execute a different
+                            behavior.
+
                         </p>
                         <p>
                             Patrol; moving around to different locations depending on what patrol pattern is attached.
@@ -138,7 +163,8 @@ cardItem:
                 </div>
                 <div class="project-side-by-side">
                     <p>
-                        Chase; Chases the player if the player is in its seeing range, when it's close enough to the player it attacks.
+                        Chase; Chases the player if the player is in its seeing range, when it's close enough to the
+                        player it attacks.
                     </p>
                     <img class="project-single-img" src="/images/{{ cardItem.imageFileRoute }}/chase-code.webp" alt="">
                 </div>
@@ -147,12 +173,14 @@ cardItem:
                     <img class="project-single-img" src="/images/{{ cardItem.imageFileRoute }}/attack-ai-tree.webp"
                         alt="">
                     <p>
-                        Attack; The enemy attacks doing an attack animation and a collision check to see if it hits, if it does the player
+                        Attack; The enemy attacks doing an attack animation and a collision check to see if it hits, if
+                        it does the player
                         takes damage, if the player moves out of range during the attack nothing happens.
                     </p>
                 </div>
                 <p>
-                    The AI is editable per enemy so it can have different behaviors making it possible to have different scenarios and
+                    The AI is editable per enemy so it can have different behaviors making it possible to have different
+                    scenarios and
                     challenges for the player. There are four patrol behaviors:
                 </p>
                 <p>
@@ -168,8 +196,10 @@ cardItem:
                     True random; randomly chooses a point in the navigation mesh it's in and goes to it.
                 </p>
                 <p>
-                    A normal sequence for the Ai would be, moving around based on its patrol behavior, if it gets a sensation trigger
-                    change to Alerted state. If it spots the player, change to Chase state. When it loses sight of the player, change
+                    A normal sequence for the Ai would be, moving around based on its patrol behavior, if it gets a
+                    sensation trigger
+                    change to Alerted state. If it spots the player, change to Chase state. When it loses sight of the
+                    player, change
                     Alerted state and if it can not see the player there change to Patrol state.
                 </p>
             </div>
@@ -179,22 +209,27 @@ cardItem:
             <div class="project-content-background project-text-padding">
                 <h3>What I learned </h3>
                 <p>
-                    Working on this project I learned how to manage time more efficiently, I often needed to juggle multiple tasks at
-                    the same time when having similar deadlines. I needed to prioritize features for each deadline very carefully so I
+                    Working on this project I learned how to manage time more efficiently, I often needed to juggle
+                    multiple tasks at
+                    the same time when having similar deadlines. I needed to prioritize features for each deadline very
+                    carefully so I
                     didn't spend too much time on one thing, so the experience of the whole game is better.
                 </p>
-                
+
                 <p>
-                    Learning Unreal and their AI systems, when I don't have much experience working in Unreal or with AI npcs.
+                    Learning Unreal and their AI systems, when I don't have much experience working in Unreal or with AI
+                    npcs.
                 </p>
-                
+
                 <p>
-                    Getting better at taking ownership of a feature that I am working on in a team environment, making sure that the
+                    Getting better at taking ownership of a feature that I am working on in a team environment, making
+                    sure that the
                     feature is up to the standard with the project and so it gets done in time as agreed by the team.
                 </p>
-                
+
                 <p>
-                    Being better at voicing my opinion in the team, being able to bring up concerns, and coming to a consensus on how
+                    Being better at voicing my opinion in the team, being able to bring up concerns, and coming to a
+                    consensus on how
                     features should operate.
                 </p>
             </div>
