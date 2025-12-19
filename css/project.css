@@ -105,6 +105,18 @@
     flex-basis: 500px;
 }
 
+.project-pages-img {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1rem 0rem;
+
+    img {
+        width: 100%;
+        height: min(3rem, 100vw - var(--space-xl));
+        object-fit: cover;
+    }
+}
 
 @media screen and (max-width: 1350px) {
     .project-top-content {
@@ -179,7 +191,7 @@
 
         img {
             width: 200rem;
-            height: auto; 
+            height: auto;
             /* object-fit: none; */
         }
     }
