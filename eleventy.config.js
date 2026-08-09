@@ -34,7 +34,7 @@ export default function (eleventyConfig) {
 
 
 export const config = {
-	pathPrefix: "/CV/",
+	pathPrefix: "/Portfolio/",
 	markdownTemplateEngine: 'njk',
 	dataTemplateEngine: 'njk',
 	htmlTemplateEngine: 'njk',
