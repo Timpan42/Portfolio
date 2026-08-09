@@ -1,5 +1,5 @@
 {
-  "name": "CV",
+  "name": "Portfolio",
   "version": "1.0.0",
   "description": "--- title: Heading ---",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "url": "https://github.com/Timpan42/CV"
+    "url": "https://github.com/Timpan42/Portfolio"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://timpan42.github.io/issues"
   },
-  "homepage": "https://timpan42.github.io/CV/",
+  "homepage": "https://timpan42.github.io/Portfolio/",
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2"
