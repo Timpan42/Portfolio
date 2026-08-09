@@ -24,6 +24,7 @@ npm-debug.*
 .sass-cache
 .env
 .cache
+.Identifier
 
 # Node modules and output
 node_modules
