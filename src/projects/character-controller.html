@@ -1,0 +1,311 @@
+---
+layout: layouts/project.html
+title: "Character controller and platforming"
+tags: "card"
+date: "2026-03-01"
+---
+
+{% set cardItem = projectData.projects[5] %}
+
+<article class="big-section">
+    {% include "partials/project-top.html" %}
+
+    <section class="container flow">
+        {% include "partials/project-quick-info.html" %}
+
+        <div class="wrapper">
+            <div class="project-content-background project-text-padding">
+
+                <h3>Introduction</h3>
+                <p>
+                    Character controllers can be extremely complex and can look very different depending on what the
+                    characters need to fulfill. There are many pre-made character controllers out in the world - Unity's
+                    “Starter assets: character controllers", Unreal's character controller asset, and many more that can
+                    be bought on different asset stores. What goes into making these controllers, and what makes a
+                    character controller good? I will be showcasing my findings on what goes into making a character
+                    controller and the process we in the team went through when working on this project.
+                </p>
+                <p>
+                    This project is
+                    a prototype of a 3D platformer metroidvania, with inspiration from PlayStation 2-era platformers. We
+                    wanted the character movement and feel to be similar to the Sly series and Jack and Daxter series.
+                    The project was made in Unity 6, and I primarily worked with the game designer Carl Leong, and we
+                    had some help with graphics and audio from Hilda Kovács and Sol Forsberg.
+                </p>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="project-content-background project-text-padding">
+                <h3>What goes into making a character controller</h3>
+                <p>
+                    First and foremost, a character controller needs to fill a purpose and fit the project. Now this can
+                    vary heavily from genre to mechanics and the style of the game. You don't want your character to
+                    feel like it’s jumping on the moon when it is inside a gravity chamber that has the gravitational
+                    pull 10x that of the Earth, and simultaneously the camera is somehow in front of you and is drifting
+                    off into space. That indeed would feel very weird, and the character controller will feel like it
+                    does not fit the scenario or the game. So what are the main things to think about before starting
+                    the process of making a character controller? A good design tool to use in this scenario is the 3Cs,
+                    aka Character, Camera, and Controller. How I would boil it down is the following.
+                </p>
+
+                <div class="closer-text">
+                    <h4>Character</h4>
+                    <p>
+                        Character embodies the style, mechanics, and world of a game. A nimble, slim-looking ninja,
+                        having
+                        the speed and turn rate of an old riding lawn mower, would not feel like it's in character.
+                    </p>
+
+                    <h4>Camera</h4>
+                    <p>
+                        Camera is the eyes of the player; from a first-person perspective to a camera that is looking
+                        from
+                        the sky, and it also dictates how much control the player has over its own view.
+                    </p>
+
+                    <h4>Controller</h4>
+                    <p>
+                        Controller is all about the feeling of the character, its responsiveness, and the feedback of
+                        pressing buttons.
+                    </p>
+                </div>
+
+                <p>
+                    A great-feeling character controller needs to be able to do great in all of the 3C points.
+                </p>
+                <p>
+                    When making the character controller, starting with figuring out the character of the game is very
+                    important; knowing what the game is going to be is needed to make a character controller that
+                    solves/fits the game. After figuring out the character, what the player is going to see comes next.
+                    Is the player able to see the whole world, or is it more narrowed? The camera will impact how the
+                    character is going to control, and how the logic needs to work in the game. Lastly, what will the
+                    player feel when controlling the character: tight responsiveness when making an input, or a built-in
+                    one-second input lag if you want to be really goofy.
+                </p>
+                <p>
+                    When all of the points are covered, it makes the programming work way easier, and the programmer(me)
+                    can plan what is needed and how the character needs to work to cover the design.
+                </p>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="project-content-background project-text-padding">
+                <h3>The process of making our character controller</h3>
+                <div class="project-side-by-side">
+                    <p>
+                        Before starting on any code, me and my co-developer(designer) wanted to make a 3D platformer
+                        metroidvania, in the style of a PS2-era game. We started by researching PS2- and PS3-era
+                        platformers, looking specifically at how the character controller felt to play and the mechanics
+                        that were used during that time. We were especially inspired by the Sly series and Jack and
+                        Daxter
+                        series. After we finalised the research, we had the mechanics that we wanted, and we had the
+                        feeling
+                        we wanted to have for the character controller. For mechanics, we wanted a dash, gliding, double
+                        jump, attacking, the ability to attach to specific objects, and time manipulation. For the
+                        feeling,
+                        we wanted it to be responsive and be forgiving while being smooth so it has a great flow to it.
+                        The
+                        camera was going to be a third-person perspective where the player could control where they were
+                        looking. To make the movement forgiving, we wanted there to be:
+                    </p>
+                    <img class="center project-single-img" src="/images/{{ cardItem.imageFileRoute }}/Sly-Daxter.png" alt="">
+                </div>
+
+
+                <div class="closer-text">
+                    <h4>Coyote time</h4>
+                    <p>
+                        A small window where the player could jump even when they're not on a platform.
+                    </p>
+
+                    <h4>Mantle zone</h4>
+                    <p>
+                        Snapping the character on top of a platform even when they did not reach on top of it.
+                    </p>
+
+                    <h4>Jump buffer</h4>
+                    <p>
+                        A small window where the jump input gets stored when falling so the jump input doesn't need
+                        to
+                        be frame perfect, making it feel more responsive.
+                    </p>
+
+                    <h4>Variable jumping</h4>
+                    <p>
+                        Changing how high and long the player is in the air, making the player have more control
+                        over
+                        the jumping.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="project-content-background project-text-padding">
+                <h3>The process of making our character controller</h3>
+                <p>
+                    When everything was said and done, we were able to implement most of the mechanics and get the
+                    feeling of the character controller down for the most parts. It was very helpful to look at
+                    <a href="https://gmtk.itch.io/platformer-toolkit">Platformer Toolkit</a> by Game Maker's Toolkit
+                    for getting a feeling for platforming tweaking and
+                    understanding how a character controller can work, and <a
+                        href="https://www.youtube.com/watch?v=hG9SzQxaCm8">Math for Game Programmers: Building a
+                        Better Jump</a> presented by Kyle Pittman to understand some of the math behind a
+                    good-feeling
+                    character controller.
+                </p>
+                <p>
+                    The character controller was built with Unity's Character Controller components, which provide
+                    some built-in tools. Slopes, step-ups, and some movement functions are built into the component,
+                    making the start of the controller easier, but a lot needs to be built on top of the components
+                    to make it good.
+                </p>
+
+                <h4>Movement handling</h4>
+                <p>
+                    Movement is handled by calculating a desired point that the character controller wants to move
+                    towards on the X and Z axes. The desired point is a direction and the max velocity the character
+                    can
+                    move. The character tries to follow the desired point by lerping towards its direction and
+                    controlling the character's velocity by how long the player holds the movement input. This gives
+                    great control over how fast we want the character to turn and how fast we want the character to
+                    accelerate. Other forces are added to the last calculation before using Unity’s Character
+                    Controller
+                    component Move function to move the character.
+                </p>
+
+                <h4>Slopes</h4>
+                <p>
+                    Unity’s Character Controller component can handle slope detection and the ability to walk on
+                    them,
+                    but there are some problems with it. If the character can jump or walk off a ledge and land on a
+                    slope that surpasses the slope angle limit, the character doesn't fall off. Which is reasonable
+                    because the components don't have physics and can't slide off stuff. To fix this, sliding needs
+                    to
+                    be implemented. First, the character needs to check if it is on an illegal slope; this is done
+                    by
+                    calculating the angle with the ground normal. If the angle is over the slope limit, it’s illegal
+                    to
+                    walk on, and the character should start sliding.
+                </p>
+
+                <h4>Step-up</h4>
+                <p>
+                    Unity’s Character Controller component has step-up functionality built in, but it’s not all that
+                    reliable and, most importantly, not always controllable. So I implemented my own step up
+                    functionality. It worked by raycasting in front of the character to detect if there are any
+                    objects
+                    that are plausible to step up to. If an object is detected, another raycast is used to detect if
+                    it
+                    hits on top of the object, to get a coordinate to teleport to.
+                </p>
+
+                <h4>Pushing object</h4>
+                <p>
+                    In the game, there are objects that can give forces to the player to make the controller move in
+                    a
+                    specific direction or move with an object. This can be done by forcefully moving the object's
+                    collider away from each other, but this can look extremely choppy and bad. To make this
+                    smoother,
+                    the character checks the object under it and gets its movement velocity. And applies it to the
+                    character controller. This worked for most cases, but it has some problems when objects try to
+                    push
+                    the character upwards, where some choppiness can happen, especially at low velocities.
+                </p>
+
+                <h4>Time manipulation</h4>
+                <p>
+                    The time manipulation we wanted for the game was to be able to control nearly all entities'
+                    update
+                    speed, except the player, which was immune to this effect. The time manipulation is quite
+                    simple. It
+                    works by multiplying a time value by a float value to manipulate how much the time value should
+                    affect movement and timers in the game. Every object that should be affected by this manipulated
+                    time value uses it when doing its calculations.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="project-content-background project-text-padding">
+                <h3>Mistakes along the way</h3>
+                <p>
+                    The project time we had was not long, and we in the project wanted to make a prototype of a
+                    game.
+                    When beginning the project, I had budgeted the character controller to take 3-4 weeks, including
+                    all
+                    the mechanics and having the movement we wanted. This was a great underestimate on my part; it
+                    took
+                    closer to six weeks to complete the character controller to a satisfying degree. I also needed
+                    to
+                    rewrite how the gravity and movement worked three weeks in because it was hard to work with and
+                    not
+                    tweakable enough for my designer to work with.
+                </p>
+                <p>
+                    In hindsight, I also believe that I chose the wrong physics component to work with in this
+                    project.
+                    Starting out, I thought that we didn't want a lot of physics objects and the character
+                    controller
+                    would have a stylized gravity, so I didn't use Unity’s Rigidbody component. When mechanics and
+                    objects started to need physics, this became a problem. The biggest problem we had with this was
+                    mostly when objects needed to push the character controller. When the character controller
+                    started
+                    to get pushed, a lot of jittering was happening on the character and with the camera, making it
+                    look
+                    quite bad. In the end, I was able to come up with a half fix for it, but the problem is still in
+                    the
+                    game. With a Rigidbody, this could be handled with its interpolation. We also didn’t benefit a
+                    lot
+                    from Unity's Character Controller component, when we needed to overwrite its inbuilt features
+                    and
+                    implement a lot of our own stuff.
+                </p>
+
+                <h4>Camera</h4>
+                <p>
+                    The current camera that the character controller uses is a Cinemachine camera with an orbital
+                    follow
+                    and a deoccluder; the camera follows the player orbitally and has hindrance detection, so it
+                    moves
+                    the camera to an available space. This works good enough but comes with some problems. We had a
+                    problem where the camera was shaking when walking around. It took a lot of time to debug and
+                    fix.
+                    Why I’m not satisfied with the camera is mostly because I was not the one who made it.
+                    Cinemachine
+                    is a prebuilt package that has a lot of good camera tools, but using it comes with the cost of
+                    losing some control over how the camera will work and how to tweak it. I wanted to make my own
+                    custom camera, but it was so late in development that I didn't feel like I had the time and
+                    knowledge to make it good.
+                </p>
+                <p>
+                    I believe we overscoped the project for the experience level and the amount of time we had,
+                    forcing
+                    us to cut some of the things we wanted to do. We wanted there to be more of an emphasis on the
+                    metroidvania part in the game, but because of time constraints, we couldn't implement those
+                    features.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="wrapper">
+            <div class="project-content-background project-text-padding">
+                <h3>What I learned</h3>
+                <p>
+                    I learned a hell of a lot about character controllers and the complexities of creating one, and
+                    the
+                    amount of detailed work that is needed to make it good. I got better at doing necessary research
+                    to
+                    get a better grasp of a work area, and a greater understanding of what in particular makes a
+                    character controller feel good in a platformer.
+                </p>
+            </div>
+        </div>
+
+    </section>
+</article>
