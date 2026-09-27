@@ -29,21 +29,15 @@
 		<h2 class="center">Projects</h2>
 		<ul class="features grid" role="list" data-rows="masonry">
 			{% set index = 0 %}
-
-			{%- for card in collections.card | reverse -%}
-
-			{% if index < 3 %} {% if card.data.cardItem.mainPage %} 
-			<li class="list-container flow" data="hover">
-				{% set cardItemContent = card.data.cardItem %}
-				{% include "partials/card.html" %}
-			</li>
-				{% set index = index+1 %}
-
+			{%- for data in projectData.projects | reverse -%}
+				{% if index < 3 and data.mainPage%} 
+					<li class="list-container flow" data="hover">
+						{% set cardData = data %}
+						{% include "partials/card.html" %}
+					</li>
+						{% set index = index+1 %}
 				{% endif %}
-
-				{% endif %}
-
-				{%- endfor -%}
+			{%- endfor -%}
 
 		</ul>
 

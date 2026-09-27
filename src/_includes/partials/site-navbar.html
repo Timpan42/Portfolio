@@ -17,16 +17,17 @@
 
         <div class="nav-right-content">
             {% for item in contact.items %}
-
-            {% if item.name == 'Email' %}
-            {% else %}
-
-            <a href="{{ item.url }}">
-                <img src="/images/{{ item.logo }}" alt="{{ item.name }}">
-            </a>
-
-            {% endif %}
-
+              {% if item.name == 'Email' %}
+                {# continue #}
+              {% elif item.name == 'CV' %}
+                  <a href="{{ item.url }}" download="Tim Fagerdal CV EN">
+                      <img src="/images/{{ item.logo }}" alt="{{ item.name }}">
+                  </a>
+              {% else %}
+                  <a href="{{ item.url }}">
+                      <img src="/images/{{ item.logo }}" alt="{{ item.name }}">
+                  </a>
+              {% endif %}
             {% endfor %}
         </div>
 
@@ -39,20 +40,23 @@
 
             <div class="mobile-links section">
                 {% for item in navigation.items %}
-                <a href="/{{ item.url }}">{{ item.text }}</a>
+                    <a href="/{{ item.url }}">{{ item.text }}</a>
                 {% endfor %}
             </div>
 
             <div class="mobile-img">
                 {% for item in contact.items %}
-                {% if item.name == 'Email' %}
-                {% else %}
-
-                <a href="{{ item.url }}">
-                    <img src="/images/{{ item.logo }}" alt="{{ item.name }}">
-                </a>
-
-                {% endif %}
+                    {% if item.name == 'Email' %}
+                        {# continue #}
+                    {% elif item.name == 'CV' %}
+                        <a href="{{ item.url }}" download="Tim Fagerdal CV EN">
+                            <img src="/images/{{ item.logo }}" alt="{{ item.name }}">
+                        </a>
+                    {% else %}
+                        <a href="{{ item.url }}">
+                            <img src="/images/{{ item.logo }}" alt="{{ item.name }}">
+                        </a>
+                    {% endif %}
                 {% endfor %}
             </div>
 

@@ -3,87 +3,15 @@ layout: layouts/project.html
 title: "In Bloom"
 tags: "card"
 date: "2025-05-01"
-
-
-cardItem:
-    mainPage: true
-    title: In Bloom
-    startDate: "2025/5"
-    endDate: "2025/6"
-    role: AI/Combat/UI programming
-    peopleAmount: 18
-    timeWorked: 7 weeks
-    engine: Unreal 5
-    otherTools: Perforce, Miro, Jira
-    summaryOne: [
-        "Third game project at FutureGames, a first person horror survival game in a post-apocalyptic world where nature has
-        taken over."
-    ]
-    summaryTwo: Worked on the enemy combat and AI, also did UI Programming.
-    url: /projects/in-bloom/
-    steamUrl: https://store.steampowered.com/app/4185520/?snr=1_5_9__205
-    projectUrl: https://futuregames.itch.io/in-bloom
-    imageFileRoute: project_img/in-bloom
-    imageUrl: /in-bloom-edit.webp
-    topProjectUrl: videos/In-Bloom-Trailer_1080p.mp4
-    topProjectUrlOrigin: https://www.youtube.com/watch?v=qm8phg69Ut4
 ---
 
+{% set cardItem = projectData.projects[3] %}
+
 <article class="big-section">
-    <section class="container project-top-content section">
-        <div class="test">
-            <h1 class="center">{{ title }} </h1>
-            <h3 class="center">Horror | FPS | Post-apocalyptic</h3>
-            <p>A first person horror survival game in a post-apocalyptic world where nature has taken over.</p>
-            <div class="project-pages-img">
-                <a href="{{cardItem.steamUrl}}">
-                <img src="/images/steam/steam_full_white.svg" alt="">
-                </a>
-                <a href="{{cardItem.projectUrl}}">
-                    <img src="/images/itchio/itchio-logo-textless-white.svg" alt="">
-                </a>
-            </div>
-        </div>
-        <video controls alt="">
-            <source src="/{{ cardItem.topProjectUrl }}" type="video/mp4">
-            {{ cardItem.topProjectUrlOrigin }}
-        </video>
-    </section>
+    {% include "partials/project-top.html" %}
 
     <section class="container flow">
-        <div class="project-about">
-            <div class="project-about-content project-text-padding">
-                <h3>Summary</h3>
-                <p>
-                    I primarily worked on AI, combat and UI programming. Used Unreal's behavior tree for AI and made
-                    sure that the enemy
-                    worked with the main combat mechanic. Also worked with the UI team to implement and connect UI with
-                    gameplay. I got
-                    better at managing time with a lot of tasks and a short deadline, taking ownership of features, and
-                    communicating in
-                    a team.
-                </p>
-            </div>
-
-            <div class="project-about-content project-text-padding">
-                <h3>Project Info</h3>
-                <p>
-                    <b>Team Size:</b> {{cardItem.peopleAmount}}
-                </p>
-                <p>
-                    <b>Project Duration:</b> {{cardItem.timeWorked}}
-                </p>
-                <p>
-                    <b>Engine:</b> {{cardItem.engine}}
-                </p>
-                <p>
-                    <b>Roles:</b> {{cardItem.role}}
-                </p>
-                <p>
-                    <b>Other Tools:</b> {{cardItem.otherTools}}
-                </p>
-            </div>
-        </div>
+        {% include "partials/project-quick-info.html" %}
 
         <div class="wrapper">
             <div class="project-content-background project-text-padding">

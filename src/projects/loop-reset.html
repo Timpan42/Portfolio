@@ -4,83 +4,16 @@ title: "Loop Reset"
 tags: "card"
 date: "2025-10-01"
 
-
-cardItem:
-    mainPage: true
-    title: Loop Reset
-    startDate: "2025/9"
-    endDate: "2025/10"
-    role: System programmer
-    peopleAmount: 5
-    timeWorked: 4 weeks
-    engine: Unreal 5
-    otherTools: Perforce, Miro, Jira
-    summaryOne: Fourth game project at FutureGames, a twin stick shooter with arcade feeling, procedural level generation, and upgradable weapons.
-    summaryTwo: Worked on procedural level generation, performance, game setup sequence, and more.
-    url: /projects/loop-reset/
-    projectUrl: https://futuregames.itch.io/loopreset
-    imageFileRoute: project_img/loop-reset
-    imageUrl: /Loop-Reset.png
-    topProjectUrl: videos/Loop-Reset-Trailer_1080p.mp4
-    topProjectUrlOrigin: https://www.youtube.com/watch?v=O-twauDlcs8
 ---
 
+{% set cardItem = projectData.projects[4] %}
 
 <article class="big-section">
-    <section class="container project-top-content section">
-        <div>
-            <h1 class="center">{{ title }} </h1>
-            <h3 class="center">Arcade | Twin Stick Shooter | Sci-Fi</h3>
-            <p>
-                A twin stick shooter with arcade feeling, procedural level generation, and upgradable weapons.
-            </p>
-            <div class="project-pages-img">
-                <a href="{{cardItem.projectUrl}}">
-                    <img src="/images/itchio/itchio-logo-textless-white.svg" alt="">
-                </a>
-            </div>
-        </div>
-        <video controls alt="">
-            <source src="/{{ cardItem.topProjectUrl }}" type="video/mp4">
-            {{ cardItem.topProjectUrlOrigin }}
-        </video>
-    </section>
+    {% include "partials/project-top.html" %}
 
     <section class="container flow">
-        <div class="project-about">
-            <div class="project-about-content project-text-padding">
-                <h3>Summary</h3>
-                <p>
-                    Loop reset is a roguelike twin-stick shooter with an arcade feel and a sci-fi theme. I primarily
-                    worked on the level
-                    generator, working with the level designer to have cohesive, playable levels. Other responsibilities
-                    were game saving,
-                    performance handling, game setup sequences, and making builds of the game. After the problems faced
-                    because of technical
-                    debt, I learned the importance of planning code bases that will be used and how systems would need
-                    to scale.
-                </p>
-            </div>
+        {% include "partials/project-quick-info.html" %}
 
-            <div class="project-about-content project-text-padding">
-                <h3>Project Info</h3>
-                <p>
-                    <b>Team Size:</b> {{cardItem.peopleAmount}}
-                </p>
-                <p>
-                    <b>Project Duration:</b> {{cardItem.timeWorked}}
-                </p>
-                <p>
-                    <b>Engine:</b> {{cardItem.engine}}
-                </p>
-                <p>
-                    <b>Roles:</b> {{cardItem.role}}
-                </p>
-                <p>
-                    <b>Other Tools:</b> {{cardItem.otherTools}}
-                </p>
-            </div>
-        </div>
         <div class="wrapper">
             <div class="project-content-background project-text-padding">
                 <h3>Introduction</h3>
@@ -195,7 +128,8 @@ cardItem:
                     <div id="iframe-img" class="iframe-img">
                         <img id="img" src="/images/{{ cardItem.imageFileRoute }}/Before-spawning.png" alt="">
 
-                        <iframe id="iframe" src="https://blueprintue.com/render/bxb63b1c/" scrolling="no" allowfullscreen></iframe> 
+                        <iframe id="iframe" src="https://blueprintue.com/render/bxb63b1c/" scrolling="no"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
 
@@ -203,9 +137,10 @@ cardItem:
                     <div id="iframe-img" class="iframe-img">
                         <img id="img" src="/images/{{ cardItem.imageFileRoute }}/Room-Spawning.png" alt="">
 
-                        <iframe id="iframe" src="https://blueprintue.com/render/o5366gmv/" scrolling="no" allowfullscreen></iframe>
+                        <iframe id="iframe" src="https://blueprintue.com/render/o5366gmv/" scrolling="no"
+                            allowfullscreen></iframe>
                     </div>
-                    
+
                     <div>
                         <h4>Room spawning</h4>
                         <p>
@@ -254,7 +189,8 @@ cardItem:
                     <div id="iframe-img" class="iframe-img">
                         <img id="img" src="/images/{{ cardItem.imageFileRoute }}/Special-Room-Spawning.png" alt="">
 
-                         <iframe id="iframe" src="https://blueprintue.com/render/zzc6h3iw/" scrolling="no" allowfullscreen></iframe>
+                        <iframe id="iframe" src="https://blueprintue.com/render/zzc6h3iw/" scrolling="no"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
 
@@ -262,7 +198,8 @@ cardItem:
                     <div id="iframe-img" class="iframe-img">
                         <img id="img" src="/images/{{ cardItem.imageFileRoute }}/Challanges.png" alt="">
 
-                         <iframe id="iframe" src="https://blueprintue.com/render/20e1zjn_/" scrolling="no" allowfullscreen></iframe>
+                        <iframe id="iframe" src="https://blueprintue.com/render/20e1zjn_/" scrolling="no"
+                            allowfullscreen></iframe>
                     </div>
 
 

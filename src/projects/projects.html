@@ -19,9 +19,9 @@ title: "Projects"
 		<h2 class="center">Project History</h2>
 		<ul class="features grid" role="list" data-rows="masonry">
 
-			{%- for card in collections.card | reverse -%}
+			{%- for data in projectData.projects | reverse -%}
 			<li class="list-container flow">
-				{% set cardItemContent = card.data.cardItem %}
+				{% set cardData = data %}
 				{% include "partials/card.html" %}
 			</li>
 

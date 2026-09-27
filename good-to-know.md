@@ -70,4 +70,27 @@ Todo:
                     </div>
                 </div>
 	
+
+Project Templet
+    "mainPage": ,
+    "title": "",
+    "startDate": "20XX/XX",
+    "endDate": "20XX/X",
+    "gameTags": "",
+    "gameInfo": "",
+    "storeTags": "",
+    "role": "",
+    "peopleAmount": ,
+    "timeWorked": "",
+    "engine": "",
+    "otherTools": "",
+    "summaryOne": "",
+    "summaryTwo": "",
+    "url": "/projects//",
+    "projectUrl": "",
+    "imageFileRoute": "project_img/",
+    "imageUrl": "/",
+    "topProjectUrl": "/",
+    "topProjectUrlOrigin": "",
+    "summary" : ""
 #}

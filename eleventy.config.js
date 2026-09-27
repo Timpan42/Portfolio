@@ -29,6 +29,26 @@ export default function (eleventyConfig) {
 		return sorted;
 	});
 
+	eleventyConfig.addNunjucksFilter("log", function (value) {
+		console.log(value);
+		return "";
+	});
+
+	eleventyConfig.addNunjucksFilter("storeTags", function (value, str) {
+		if (value.includes(str)) {
+			return true
+		}
+
+		return false;
+	});
+
+	eleventyConfig.addNunjucksFilter("isVideo", function (value) {
+		if (value.includes(".mp4")) {
+			return true
+		}
+
+		return false;
+	});
 };
 
 

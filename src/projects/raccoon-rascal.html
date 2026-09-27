@@ -3,80 +3,16 @@ layout: layouts/project.html
 title: "Raccoon Rascal"
 tags: "card"
 date: "2024-10-01"
-
-
-cardItem:
-    mainPage: true
-    title: Raccoon Rascal
-    startDate: "2024/10"
-    role: Gameplay/System/UI programmer
-    endDate: "2024/11"
-    peopleAmount: 15
-    timeWorked: 3 weeks
-    engine: Unity
-    otherTools: Perforce, Miro, Jira
-    summaryOne: First game project at FutureGames, play as a raccoon trying to steal items, while not trying to get captured.
-    summaryTwo: Worked on pick-ups, save system, buffs system, and store system.
-    url: /projects/raccoon-rascal/
-    projectUrl: https://futuregames.itch.io/raccoonrascal
-    imageFileRoute: project_img/raccoon-rascal
-    imageUrl: /Raccon_Rascal.webp
-    topProjectUrl: videos/Raccoon-Rascal-Trailer_1080p.mp4
-    topProjectUrlOrigin: https://www.youtube.com/watch?v=k8EJK-X4Qgo
 ---
 
+{% set cardItem = projectData.projects[1] %}
 
 <article class="big-section">
-    <section class="container project-top-content section">
-        <div>
-            <h1 class="center">{{ title }} </h1>
-            <h3 class="center">Chase and Run | Third-person </h3>
-            <p>
-                Play as a mischievous raccoon stealing items while trying not to get caught.
-            </p>
-            <div class="project-pages-img">
-                <a href="{{cardItem.projectUrl}}">
-                    <img src="/images/itchio/itchio-logo-textless-white.svg" alt="">
-                </a>
-            </div>
-        </div>
-        <video controls alt="">
-            <source src="/{{ cardItem.topProjectUrl }}" type="video/mp4">
-            {{ cardItem.topProjectUrlOrigin }}
-        </video>
-    </section>
+        {% include "partials/project-top.html" %}
 
     <section class="container flow">
-        <div class="project-about">
-            <div class="project-about-content project-text-padding">
-                <h3>Summary</h3>
-                <p>
-                    Raccoon Rascol is a third-person chase and run game, where I worked on Gameplay, System and UI programming. I go into
-                    more detail on how the spawning system works and in game UI. I learned from this project how to work in a team in Unity,
-                    got better at communication in a team, learning how to manage stress when working and changing plans when getting
-                    feedback.
-                </p>
-            </div>
+        {% include "partials/project-quick-info.html" %}
 
-            <div class="project-about-content project-text-padding">
-                <h3>Project Info</h3>
-                <p>
-                    <b>Team Size:</b> {{cardItem.peopleAmount}}
-                </p>
-                <p>
-                    <b>Project Duration:</b> {{cardItem.timeWorked}}
-                </p>
-                <p>
-                    <b>Engine:</b> {{cardItem.engine}}
-                </p>
-                <p>
-                    <b>Roles:</b> {{cardItem.role}}
-                </p>
-                <p>
-                    <b>Other Tools:</b> {{cardItem.otherTools}}
-                </p>
-            </div>
-        </div>
         <div class="wrapper">
             <div class="project-content-background project-text-padding">
         
@@ -142,7 +78,7 @@ cardItem:
                         </h4>
                         <img src="/images/main/chevron-vit-rotate.png" alt="">
                     </button>
-                    <div id="spawner_code">
+                    <div style="display: none;" id="spawner_code">
                         {% highlight "csharp" %}
 using System.Collections;
 using System.Collections.Generic;
@@ -370,7 +306,7 @@ public class RandomSpawner : Spawner
                         </h4>
                         <img src="/images/main/chevron-vit-rotate.png" alt="">
                     </button>
-                    <div id="greed_system">
+                    <div style="display: none;" id="greed_system">
                         {% highlight "csharp" %}
 using System;
 using System.Collections;
@@ -528,7 +464,7 @@ public class GreedSystem : MonoBehaviour
                         </h4>
                         <img src="/images/main/chevron-vit-rotate.png" alt="">
                     </button>
-                    <div id="UI_manager">
+                    <div style="display: none;" id="UI_manager">
                         {% highlight "csharp" %}
 using System;
 using System.Collections;
@@ -708,7 +644,7 @@ public class UiManger : MonoBehaviour
                         </h4>
                         <img src="/images/main/chevron-vit-rotate.png" alt="">
                     </button>
-                    <div id="skins_system">
+                    <div style="display: none;" id="skins_system">
                         {% highlight "csharp" %}
 using System;
 using System.Collections;

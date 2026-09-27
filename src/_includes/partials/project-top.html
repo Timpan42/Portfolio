@@ -1,0 +1,33 @@
+{% set cardItem = value %}
+
+<section class="container project-top-content section">
+    <div>
+        <h1 class="center">{{ title }} </h1>
+        <h3 class="center">{{cardItem.gameTags}}</h3>
+        <p>
+            {{cardItem.gameInfo}}
+        </p>
+        <div class="project-pages-img">
+            {% if cardItem.storeTags | storeTags("steam")%}
+            <a href="{{cardItem.steamUrl}}">
+                <img src="/images/steam/steam_full_white.svg" alt="">
+            </a>
+            {% endif %}
+            {% if cardItem.storeTags | storeTags("itch")%}
+            <a href="{{cardItem.projectUrl}}">
+                <img src="/images/itchio/itchio-logo-textless-white.svg" alt="">
+            </a>
+            {% endif %}
+
+        </div>
+    </div>
+    {% if cardItem.topProjectUrl | isVideo%}
+        <video controls alt="">
+            <source src="/{{ cardItem.topProjectUrl }}" type="video/mp4">
+            {{ cardItem.topProjectUrlOrigin }}
+        </video>
+    {% else%}
+        <img src="/images/{{ cardItem.imageFileRoute }}{{ cardItem.topProjectUrl }}" alt="">
+    {% endif %}
+
+</section>
