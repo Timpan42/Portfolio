@@ -18,7 +18,11 @@
                 <img src="/images/itchio/itchio-logo-textless-white.svg" alt="">
             </a>
             {% endif %}
-
+            {% if cardItem.storeTags | storeTags("github")%}
+            <a href="{{cardItem.gitUrl}}">
+                <img src="/images/github/github-mark-white.png" alt="">
+            </a>
+            {% endif %}
         </div>
     </div>
     {% if cardItem.topProjectUrl | isVideo%}

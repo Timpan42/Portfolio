@@ -110,7 +110,8 @@ date: "2026-03-01"
                         camera was going to be a third-person perspective where the player could control where they were
                         looking. To make the movement forgiving, we wanted there to be:
                     </p>
-                    <img class="center project-single-img" src="/images/{{ cardItem.imageFileRoute }}/Sly-Daxter.png" alt="">
+                    <img class="center project-single-img" src="/images/{{ cardItem.imageFileRoute }}/Sly-Daxter.png"
+                        alt="">
                 </div>
 
 
@@ -164,44 +165,70 @@ date: "2026-03-01"
                     to make it good.
                 </p>
 
-                <h4>Movement handling</h4>
-                <p>
-                    Movement is handled by calculating a desired point that the character controller wants to move
-                    towards on the X and Z axes. The desired point is a direction and the max velocity the character
-                    can
-                    move. The character tries to follow the desired point by lerping towards its direction and
-                    controlling the character's velocity by how long the player holds the movement input. This gives
-                    great control over how fast we want the character to turn and how fast we want the character to
-                    accelerate. Other forces are added to the last calculation before using Unity’s Character
-                    Controller
-                    component Move function to move the character.
-                </p>
+                <div class="project-side-by-side">
+                    <div>
+                        <h4>Movement handling</h4>
+                        <p>
+                            Movement is handled by calculating a desired point that the character controller wants to
+                            move
+                            towards on the X and Z axes. The desired point is a direction and the max velocity the
+                            character
+                            can
+                            move. The character tries to follow the desired point by lerping towards its direction and
+                            controlling the character's velocity by how long the player holds the movement input. This
+                            gives
+                            great control over how fast we want the character to turn and how fast we want the character
+                            to
+                            accelerate. Other forces are added to the last calculation before using Unity’s Character
+                            Controller
+                            component Move function to move the character.
+                        </p>
+                    </div>
+                    <img class="center project-single-img" src="/gifs/c-c/Movement.gif" alt="">
+                </div>
 
-                <h4>Slopes</h4>
-                <p>
-                    Unity’s Character Controller component can handle slope detection and the ability to walk on
-                    them,
-                    but there are some problems with it. If the character can jump or walk off a ledge and land on a
-                    slope that surpasses the slope angle limit, the character doesn't fall off. Which is reasonable
-                    because the components don't have physics and can't slide off stuff. To fix this, sliding needs
-                    to
-                    be implemented. First, the character needs to check if it is on an illegal slope; this is done
-                    by
-                    calculating the angle with the ground normal. If the angle is over the slope limit, it’s illegal
-                    to
-                    walk on, and the character should start sliding.
-                </p>
+                <div class="project-side-by-side" data-layout="column-reverse">
+                    <img class="project-single-img" src="/gifs/c-c/Slope.gif" alt="">
+                    <div>
+                        <h4>Slopes</h4>
+                        <p>
+                            Unity’s Character Controller component can handle slope detection and the ability to walk on
+                            them,
+                            but there are some problems with it. If the character can jump or walk off a ledge and land
+                            on a
+                            slope that surpasses the slope angle limit, the character doesn't fall off. Which is
+                            reasonable
+                            because the components don't have physics and can't slide off stuff. To fix this, sliding
+                            needs
+                            to
+                            be implemented. First, the character needs to check if it is on an illegal slope; this is
+                            done
+                            by
+                            calculating the angle with the ground normal. If the angle is over the slope limit, it’s
+                            illegal
+                            to
+                            walk on, and the character should start sliding.
+                        </p>
+                    </div>
+                </div>
 
-                <h4>Step-up</h4>
-                <p>
-                    Unity’s Character Controller component has step-up functionality built in, but it’s not all that
-                    reliable and, most importantly, not always controllable. So I implemented my own step up
-                    functionality. It worked by raycasting in front of the character to detect if there are any
-                    objects
-                    that are plausible to step up to. If an object is detected, another raycast is used to detect if
-                    it
-                    hits on top of the object, to get a coordinate to teleport to.
-                </p>
+                <div class="project-side-by-side">
+                    <div>
+                        <h4>Step-up</h4>
+                        <p>
+                            Unity’s Character Controller component has step-up functionality built in, but it’s not all
+                            that
+                            reliable and, most importantly, not always controllable. So I implemented my own step up
+                            functionality. It worked by raycasting in front of the character to detect if there are any
+                            objects
+                            that are plausible to step up to. If an object is detected, another raycast is used to
+                            detect if
+                            it
+                            hits on top of the object, to get a coordinate to teleport to.
+                        </p>
+                    </div>
+                    <img class="center project-single-img" src="/gifs/c-c/Step-up.gif" alt="">
+                </div>
 
                 <h4>Pushing object</h4>
                 <p>
@@ -216,16 +243,29 @@ date: "2026-03-01"
                     the character upwards, where some choppiness can happen, especially at low velocities.
                 </p>
 
-                <h4>Time manipulation</h4>
-                <p>
-                    The time manipulation we wanted for the game was to be able to control nearly all entities'
-                    update
-                    speed, except the player, which was immune to this effect. The time manipulation is quite
-                    simple. It
-                    works by multiplying a time value by a float value to manipulate how much the time value should
-                    affect movement and timers in the game. Every object that should be affected by this manipulated
-                    time value uses it when doing its calculations.
-                </p>
+                <div class="project-side-by-side">
+                    <img class="center project-single-img" src="/gifs/c-c/Move-side.gif" alt="">
+                    <img class="center project-single-img" src="/gifs/c-c/Move-up.gif" alt="">
+                </div>
+
+                <div class="project-side-by-side">
+                    <div>
+                        <h4>Time manipulation</h4>
+                        <p>
+                            The time manipulation we wanted for the game was to be able to control nearly all entities'
+                            update
+                            speed, except the player, which was immune to this effect. The time manipulation is quite
+                            simple. It
+                            works by multiplying a time value by a float value to manipulate how much the time value
+                            should
+                            affect movement and timers in the game. Every object that should be affected by this
+                            manipulated
+                            time value uses it when doing its calculations.
+                        </p>
+                    </div>
+                    <img class="project-single-img" src="/gifs/c-c/Time-manipulation.gif" alt="">
+                </div>
+
 
             </div>
         </div>
@@ -266,22 +306,31 @@ date: "2026-03-01"
                     implement a lot of our own stuff.
                 </p>
 
-                <h4>Camera</h4>
-                <p>
-                    The current camera that the character controller uses is a Cinemachine camera with an orbital
-                    follow
-                    and a deoccluder; the camera follows the player orbitally and has hindrance detection, so it
-                    moves
-                    the camera to an available space. This works good enough but comes with some problems. We had a
-                    problem where the camera was shaking when walking around. It took a lot of time to debug and
-                    fix.
-                    Why I’m not satisfied with the camera is mostly because I was not the one who made it.
-                    Cinemachine
-                    is a prebuilt package that has a lot of good camera tools, but using it comes with the cost of
-                    losing some control over how the camera will work and how to tweak it. I wanted to make my own
-                    custom camera, but it was so late in development that I didn't feel like I had the time and
-                    knowledge to make it good.
-                </p>
+                <div class="project-side-by-side">
+                    <div>
+                        <h4>Camera</h4>
+                        <p>
+                            The current camera that the character controller uses is a Cinemachine camera with an
+                            orbital
+                            follow
+                            and a deoccluder; the camera follows the player orbitally and has hindrance detection, so it
+                            moves
+                            the camera to an available space. This works good enough but comes with some problems. We
+                            had a
+                            problem where the camera was shaking when walking around. It took a lot of time to debug and
+                            fix.
+                            Why I’m not satisfied with the camera is mostly because I was not the one who made it.
+                            Cinemachine
+                            is a prebuilt package that has a lot of good camera tools, but using it comes with the cost
+                            of
+                            losing some control over how the camera will work and how to tweak it. I wanted to make my
+                            own
+                            custom camera, but it was so late in development that I didn't feel like I had the time and
+                            knowledge to make it good.
+                        </p>
+                    </div>
+                    <img class="project-single-img" src="/gifs/c-c/Camera.gif" alt="">
+                </div>
                 <p>
                     I believe we overscoped the project for the experience level and the amount of time we had,
                     forcing
