@@ -171,7 +171,10 @@
         </div>
     </div>
     
-        <img src="/Portfolio/images/project_img/...videos/..." alt="">
+        <video controls="" alt="">
+            <source src="/Portfolio/videos/Cthulhus Reach_ Devil Reef Official Launch Trailer.mp4" type="video/mp4">
+            https://www.youtube.com/watch?v=KxzK_JcQVHk
+        </video>
     
 
 </section>
@@ -269,44 +272,71 @@
                     changes that one enemy needed but not the other. After voicing my opinion about this problem, I got
                     tasked with implementing a system that made it easy to modify enemy behavior and make it reusable.
                 </p>
-                <p>
-                    After pondering on this problem for about 3-4 days and three rewrites, I finally came up with a
-                    solution to the problem. The new and improved enemy behavior system works by first implementing a
-                    data class that will hold and update all necessary data that it holds; for example, updating whether
-                    the enemy sees the player and where it wants to walk. Afterwards, an action class needs to be
-                    implemented; it will make actions based on the data class, for example, attacking the player when
-                    they are close enough. When the behavior wants to be used, the enemy logic script implements the
-                    data and the action class, and uses both of the classes updated inside of its own update method.
-                </p>
-                <p>
-                    The positives of this system are that it makes it easy to swap behavior from one to another; the
-                    implementer only needs to change the classes that they want to use and run their update method.
-                    After implementing a behavior, it gets stored as a library with other behaviors that can be reused,
-                    so the base implementation only has to be done once. The system makes it easier to make more
-                    enemies, especially when they have similar behaviors to other enemies but they use a different
-                    attack or different movement.
-                </p>
-                <p>
-                    Some of the problems with this system are that each behavior needs to be implemented in code, so
-                    it’s not friendly to people who don't have programming knowledge, and it’s not intuitive compared to
-                    behavior trees that are more visualisable.
-                </p>
+                <div class="project-side-by-side">
+                    <div>
+                        <p>
+                            After pondering on this problem for about 3-4 days and three rewrites, I finally came up
+                            with a
+                            solution to the problem. The new and improved enemy behavior system works by first
+                            implementing a
+                            data class that will hold and update all necessary data that it holds; for example, updating
+                            whether
+                            the enemy sees the player and where it wants to walk. Afterwards, an action class needs to
+                            be
+                            implemented; it will make actions based on the data class, for example, attacking the player
+                            when
+                            they are close enough. When the behavior wants to be used, the enemy logic script implements
+                            the
+                            data and the action class, and uses both of the classes updated inside of its own update
+                            method.
+                        </p>
+                        <p>
+                            The positives of this system are that it makes it easy to swap behavior from one to another;
+                            the
+                            implementer only needs to change the classes that they want to use and run their update
+                            method.
+                            After implementing a behavior, it gets stored as a library with other behaviors that can be
+                            reused,
+                            so the base implementation only has to be done once. The system makes it easier to make more
+                            enemies, especially when they have similar behaviors to other enemies but they use a
+                            different
+                            attack or different movement.
+                        </p>
+                        <p>
+                            Some of the problems with this system are that each behavior needs to be implemented in
+                            code, so
+                            it’s not friendly to people who don't have programming knowledge, and it’s not intuitive
+                            compared to
+                            behavior trees that are more visualisable.
+                        </p>
+                    </div>
+                    <img class="center project-single-img" src="/Portfolio/images/project_img/lia/EnemyLogic.png" alt="">
+                </div>
             </div>
 
             <div class="project-content-background project-text-padding">
                 <h3>Performance</h3>
-                <p>
-                    I was tasked with fixing a performance spike that occurred when walking into a room with an enemy
-                    encounter for the first time. I investigated the problem with the help of Unity's profiler tool to
-                    see where the performance spike happens. There were three notable performance hogs that happened at
-                    the same time. The first and most performance-intensive was an audio file that was being opened and
-                    loaded into the game. This was weird because we believed we had “Preload Audio Data“ and “Load In
-                    Background" set to active on all the audio files, so most files should already be loaded. After
-                    hunting down the audio file, both “Preload Audio Data“ and “Load In Background" were deactivated,
-                    meaning when the audio played, it got loaded from file at runtime, something that is very
-                    performance intensive and is noticeable when it happens.
+                <div class="project-side-by-side">
+                    <p>
+                        I was tasked with fixing a performance spike that occurred when walking into a room with an
+                        enemy
+                        encounter for the first time. I investigated the problem with the help of Unity's profiler tool
+                        to
+                        see where the performance spike happens. There were three notable performance hogs that happened
+                        at
+                        the same time. The first and most performance-intensive was an audio file that was being opened
+                        and
+                        loaded into the game. This was weird because we believed we had “Preload Audio Data“ and “Load
+                        In
+                        Background" set to active on all the audio files, so most files should already be loaded. After
+                        hunting down the audio file, both “Preload Audio Data“ and “Load In Background" were
+                        deactivated,
+                        meaning when the audio played, it got loaded from file at runtime, something that is very
+                        performance intensive and is noticeable when it happens.
 
-                </p>
+                    </p>
+                    <img class="center project-single-img" src="/Portfolio/images/project_img/lia/AudioClip.webp" alt="">
+                </div>
                 <p>
                     The second performance problem was because of setting a text element. When walking into an enemy
                     event room, it shows a header label that can have different text, but when it happens, there is a
@@ -327,7 +357,29 @@
                     After all the fixes were added, the performance spike was gone, and the performance of the game
                     improved.
                 </p>
+
+                <div class="">
+                    <button class="project-button" onclick="ToggleContent('tmp-fix')">
+                        <h4>
+                        Text force mesh update
+                        </h4>
+                        <img style="transform: rotate(-90deg);" id="img-tmp-fix" src="/Portfolio/images/main/chevron-vit-rotate.png" alt="">
+                    </button>
+                    <div style="display: none;" id="tmp-fix">
+                        <pre class="language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Initialize</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> texts<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> texts<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            eventTextLabel<span class="token punctuation">.</span>text <span class="token operator">=</span> texts<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            eventTextLabel<span class="token punctuation">.</span><span class="token function">ForceMeshUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></code></pre>
+                    </div>
+                </div>
+
             </div>
+
+
             <div class="project-content-background project-text-padding">
                 <h3>Poolhandeling</h3>
                 <p>
@@ -352,6 +404,133 @@
                     This pool manager is generic and can handle most objects, and it fixes the need to spawn multiple
                     objects over and over again, and objects can be reused after returning them to the pool.
                 </p>
+
+                <div class="">
+                    <button class="project-button" onclick="ToggleContent('interface')">
+                        <h4>
+                            Pool Interface
+                        </h4>
+                        <img style="transform: rotate(-90deg);" id="img-interface" src="/Portfolio/images/main/chevron-vit-rotate.png" alt="">
+                    </button>
+                    <div style="display: none;" id="interface">
+                        <pre class="language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IPoolObject</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> GameObjectID <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> PoolID <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">bool</span></span> HasPool <span class="token punctuation">{</span><span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name">GameObject</span> GetGameObject <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name">Type</span> GetPoolType <span class="token punctuation">{</span><span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">InitializeObjectData</span><span class="token punctuation">(</span><span class="token class-name">GameObject</span> prefab<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> poolID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="">
+                    <button class="project-button" onclick="ToggleContent('manager')">
+                        <h4>
+                            Pool Manager
+                        </h4>
+                        <img style="transform: rotate(-90deg);" id="img-manager" src="/Portfolio/images/main/chevron-vit-rotate.png" alt="">
+                    </button>
+                    <div style="display: none;" id="manager">
+                        <pre class="language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PoolData</span>
+<span class="token punctuation">{</span>
+<span class="token range operator">..</span><span class="token punctuation">.</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">bool</span></span> <span class="token function">IsRightPool</span><span class="token punctuation">(</span><span class="token class-name">IPoolObject</span> poolObject<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> PoolType <span class="token operator">==</span> poolObject<span class="token punctuation">.</span>GetPoolType <span class="token operator">&amp;&amp;</span> GameObjectID <span class="token operator">==</span> poolObject<span class="token punctuation">.</span>GameObjectID<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">InitializePool</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> PoolID<span class="token punctuation">,</span> <span class="token class-name">IPoolObject</span> poolObject<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> amount<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">bool</span></span> isUiObject<span class="token punctuation">,</span> <span class="token class-name">Transform</span> parent<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Pool <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        isUiPool <span class="token operator">=</span> isUiObject<span class="token punctuation">;</span>
+        PoolType <span class="token operator">=</span> poolObject<span class="token punctuation">.</span>GetPoolType<span class="token punctuation">;</span>
+        GameObjectID <span class="token operator">=</span> poolObject<span class="token punctuation">.</span>GameObjectID<span class="token punctuation">;</span>
+        Pool<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">PopulatePool</span><span class="token punctuation">(</span>PoolID<span class="token punctuation">,</span> poolObject<span class="token punctuation">,</span> amount<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token range operator">..</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PoolManager</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">MonoBehaviour</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">PoolManager</span> Instance <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token class-name">List<span class="token punctuation">&lt;</span>PoolData<span class="token punctuation">></span></span> objectPool <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span></span><span class="token punctuation">]</span> <span class="token keyword">protected</span> <span class="token class-name">Transform</span> pooledObjectParent<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">SerializeField</span></span><span class="token punctuation">]</span> <span class="token keyword">protected</span> <span class="token class-name">Transform</span> uiPooledObjectParent<span class="token punctuation">;</span>
+
+<span class="token range operator">..</span><span class="token punctuation">.</span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">WarmupPool</span><span class="token punctuation">(</span><span class="token class-name">GameObject</span> rootObject<span class="token punctuation">,</span> <span class="token class-name">IPoolObject</span> poolObject<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> amount<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name"><span class="token keyword">bool</span></span> poolExists <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name">PoolData</span> poolData <span class="token keyword">in</span> objectPool<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>poolData<span class="token punctuation">.</span><span class="token function">IsRightPool</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> poolExists <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>poolExists<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+        poolObject<span class="token punctuation">.</span><span class="token function">InitializeObjectData</span><span class="token punctuation">(</span>rootObject<span class="token punctuation">,</span> objectPool<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">bool</span></span> isUiObject <span class="token operator">=</span> poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">GetComponent</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>RectTransform<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>isUiObject <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">!=</span> uiPooledObjectParent<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">SetParent</span><span class="token punctuation">(</span>uiPooledObjectParent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">!=</span> pooledObjectParent<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">SetParent</span><span class="token punctuation">(</span>pooledObjectParent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token class-name">PoolData</span> tmpPoolData <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>GetPoolType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tmpPoolData<span class="token punctuation">.</span><span class="token function">InitializePool</span><span class="token punctuation">(</span>objectPool<span class="token punctuation">.</span>Count<span class="token punctuation">,</span> poolObject<span class="token punctuation">,</span> amount<span class="token punctuation">,</span> isUiObject<span class="token punctuation">,</span> poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span><span class="token function">SetActive</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        objectPool<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>tmpPoolData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token return-type class-name">IPoolObject</span> <span class="token function">GetFromQueue</span><span class="token punctuation">(</span><span class="token class-name">IPoolObject</span> poolObject<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> amount <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>PoolID <span class="token operator">>=</span> objectPool<span class="token punctuation">.</span>Count <span class="token operator">||</span> poolObject<span class="token punctuation">.</span>PoolID <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">WarmupPool</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">,</span> poolObject<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">ValidateObjectPoolData</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>objectPool<span class="token punctuation">[</span>poolObject<span class="token punctuation">.</span>PoolID<span class="token punctuation">]</span><span class="token punctuation">.</span>Pool<span class="token punctuation">.</span>Count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            objectPool<span class="token punctuation">[</span>poolObject<span class="token punctuation">.</span>PoolID<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">PopulatePool</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>PoolID<span class="token punctuation">,</span> poolObject<span class="token punctuation">,</span> amount<span class="token punctuation">,</span> pooledObjectParent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">IPoolObject</span> tmpPoolObject <span class="token operator">=</span> objectPool<span class="token punctuation">[</span>poolObject<span class="token punctuation">.</span>PoolID<span class="token punctuation">]</span><span class="token punctuation">.</span>Pool<span class="token punctuation">.</span><span class="token function">Dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tmpPoolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span><span class="token function">SetActive</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> tmpPoolObject<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">AddToQueue</span><span class="token punctuation">(</span><span class="token class-name">IPoolObject</span> poolObject<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>PoolID <span class="token operator">>=</span> objectPool<span class="token punctuation">.</span>Count <span class="token operator">||</span> poolObject<span class="token punctuation">.</span>PoolID <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">WarmupPool</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">,</span> poolObject<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">ValidateObjectPoolData</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+        poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span><span class="token function">SetActive</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>objectPool<span class="token punctuation">[</span>poolObject<span class="token punctuation">.</span>PoolID<span class="token punctuation">]</span><span class="token punctuation">.</span>isUiPool <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">!=</span> uiPooledObjectParent<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">SetParent</span><span class="token punctuation">(</span>uiPooledObjectParent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span>parent <span class="token operator">!=</span> pooledObjectParent<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            poolObject<span class="token punctuation">.</span>GetGameObject<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">SetParent</span><span class="token punctuation">(</span>pooledObjectParent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        objectPool<span class="token punctuation">[</span>poolObject<span class="token punctuation">.</span>PoolID<span class="token punctuation">]</span><span class="token punctuation">.</span>Pool<span class="token punctuation">.</span><span class="token function">Enqueue</span><span class="token punctuation">(</span>poolObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token range operator">..</span><span class="token punctuation">.</span></code></pre>
+                    </div>
+                </div>
+
             </div>
         </div>
 
