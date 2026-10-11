@@ -97,11 +97,15 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-
+    
+    h4{
+        color: #2fe576;
+    }
+    
     img {
         width: 2.5rem;
         height: 2.5rem;
-
+        filter: brightness(0) saturate(100%) invert(66%) sepia(100%) saturate(381%) hue-rotate(83deg) brightness(97%) contrast(86%);
     }
 }
 

@@ -148,7 +148,7 @@
         },
         {
             "name": "lia-the-fine-arc",
-            "mainPage": false,
+            "mainPage": true,
             "title": "Internship at The Fine Arc",
             "startDate": "2026/05",
             "endDate": "currently",
@@ -164,10 +164,10 @@
             "url": "/projects/lia-the-fine-arc/",
             "projectUrl": "https://store.steampowered.com/app/2412200/Cthulhus_Reach_Devil_Reef/",
             "steamUrl": "https://store.steampowered.com/app/2412200/Cthulhus_Reach_Devil_Reef/",
-            "imageFileRoute": "project_img/...",
-            "imageUrl": "/...",
-            "topProjectUrl": "videos/...",
-            "topProjectUrlOrigin": "",
+            "imageFileRoute": "project_img/lia",
+            "imageUrl": "/Cthulhus-Reach-Devil-Reef-icon.webp",
+            "topProjectUrl": "videos/Cthulhus Reach_ Devil Reef Official Launch Trailer.mp4",
+            "topProjectUrlOrigin": "https://www.youtube.com/watch?v=KxzK_JcQVHk",
             "summary": "I interned at The Fine Arc, working mostly on their game Cthulhu's Reach: Devil Reef, an action roguelike co-op multiplayer game loosely based on  H. P. Lovecraft's novel The Shadow Over Innsmouth. I worked all over the place in the project, from UI to multiplayer, gameplay, and even some design work. I had a lot of responsibilities over my work and completing my tasks."
         }
     ]

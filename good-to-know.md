@@ -63,7 +63,7 @@ Todo:
                         </h4>
                         <img src="/images/main/chevron-vit-rotate.png" alt="">
                     </button>
-                    <div id="CHANGE">
+                    <div style="display: none;" id="CHANGE">
                         {% highlight "" %}
 
 						{% endhighlight %}

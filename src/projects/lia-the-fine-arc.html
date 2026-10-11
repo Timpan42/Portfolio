@@ -74,44 +74,73 @@ date: "2026-05-01"
                     changes that one enemy needed but not the other. After voicing my opinion about this problem, I got
                     tasked with implementing a system that made it easy to modify enemy behavior and make it reusable.
                 </p>
-                <p>
-                    After pondering on this problem for about 3-4 days and three rewrites, I finally came up with a
-                    solution to the problem. The new and improved enemy behavior system works by first implementing a
-                    data class that will hold and update all necessary data that it holds; for example, updating whether
-                    the enemy sees the player and where it wants to walk. Afterwards, an action class needs to be
-                    implemented; it will make actions based on the data class, for example, attacking the player when
-                    they are close enough. When the behavior wants to be used, the enemy logic script implements the
-                    data and the action class, and uses both of the classes updated inside of its own update method.
-                </p>
-                <p>
-                    The positives of this system are that it makes it easy to swap behavior from one to another; the
-                    implementer only needs to change the classes that they want to use and run their update method.
-                    After implementing a behavior, it gets stored as a library with other behaviors that can be reused,
-                    so the base implementation only has to be done once. The system makes it easier to make more
-                    enemies, especially when they have similar behaviors to other enemies but they use a different
-                    attack or different movement.
-                </p>
-                <p>
-                    Some of the problems with this system are that each behavior needs to be implemented in code, so
-                    it’s not friendly to people who don't have programming knowledge, and it’s not intuitive compared to
-                    behavior trees that are more visualisable.
-                </p>
+                <div class="project-side-by-side">
+                    <div>
+                        <p>
+                            After pondering on this problem for about 3-4 days and three rewrites, I finally came up
+                            with a
+                            solution to the problem. The new and improved enemy behavior system works by first
+                            implementing a
+                            data class that will hold and update all necessary data that it holds; for example, updating
+                            whether
+                            the enemy sees the player and where it wants to walk. Afterwards, an action class needs to
+                            be
+                            implemented; it will make actions based on the data class, for example, attacking the player
+                            when
+                            they are close enough. When the behavior wants to be used, the enemy logic script implements
+                            the
+                            data and the action class, and uses both of the classes updated inside of its own update
+                            method.
+                        </p>
+                        <p>
+                            The positives of this system are that it makes it easy to swap behavior from one to another;
+                            the
+                            implementer only needs to change the classes that they want to use and run their update
+                            method.
+                            After implementing a behavior, it gets stored as a library with other behaviors that can be
+                            reused,
+                            so the base implementation only has to be done once. The system makes it easier to make more
+                            enemies, especially when they have similar behaviors to other enemies but they use a
+                            different
+                            attack or different movement.
+                        </p>
+                        <p>
+                            Some of the problems with this system are that each behavior needs to be implemented in
+                            code, so
+                            it’s not friendly to people who don't have programming knowledge, and it’s not intuitive
+                            compared to
+                            behavior trees that are more visualisable.
+                        </p>
+                    </div>
+                    <img class="center project-single-img" src="/images/{{ cardItem.imageFileRoute }}/EnemyLogic.png"
+                        alt="">
+                </div>
             </div>
 
             <div class="project-content-background project-text-padding">
                 <h3>Performance</h3>
-                <p>
-                    I was tasked with fixing a performance spike that occurred when walking into a room with an enemy
-                    encounter for the first time. I investigated the problem with the help of Unity's profiler tool to
-                    see where the performance spike happens. There were three notable performance hogs that happened at
-                    the same time. The first and most performance-intensive was an audio file that was being opened and
-                    loaded into the game. This was weird because we believed we had “Preload Audio Data“ and “Load In
-                    Background" set to active on all the audio files, so most files should already be loaded. After
-                    hunting down the audio file, both “Preload Audio Data“ and “Load In Background" were deactivated,
-                    meaning when the audio played, it got loaded from file at runtime, something that is very
-                    performance intensive and is noticeable when it happens.
+                <div class="project-side-by-side">
+                    <p>
+                        I was tasked with fixing a performance spike that occurred when walking into a room with an
+                        enemy
+                        encounter for the first time. I investigated the problem with the help of Unity's profiler tool
+                        to
+                        see where the performance spike happens. There were three notable performance hogs that happened
+                        at
+                        the same time. The first and most performance-intensive was an audio file that was being opened
+                        and
+                        loaded into the game. This was weird because we believed we had “Preload Audio Data“ and “Load
+                        In
+                        Background" set to active on all the audio files, so most files should already be loaded. After
+                        hunting down the audio file, both “Preload Audio Data“ and “Load In Background" were
+                        deactivated,
+                        meaning when the audio played, it got loaded from file at runtime, something that is very
+                        performance intensive and is noticeable when it happens.
 
-                </p>
+                    </p>
+                    <img class="center project-single-img" src="/images/{{ cardItem.imageFileRoute }}/AudioClip.webp"
+                        alt="">
+                </div>
                 <p>
                     The second performance problem was because of setting a text element. When walking into an enemy
                     event room, it shows a header label that can have different text, but when it happens, there is a
@@ -132,7 +161,31 @@ date: "2026-05-01"
                     After all the fixes were added, the performance spike was gone, and the performance of the game
                     improved.
                 </p>
+
+                <div class="">
+                    <button class="project-button" onclick="ToggleContent('tmp-fix')">
+                        <h4>
+                        Text force mesh update
+                        </h4>
+                        <img style="transform: rotate(-90deg);" id="img-tmp-fix" src="/images/main/chevron-vit-rotate.png" alt="">
+                    </button>
+                    <div style="display: none;" id="tmp-fix">
+                        {% highlight "csharp" %}
+    public void Initialize(string[] texts)
+    {
+        for (int i = 0; i < texts.Length; i++)
+        {
+            eventTextLabel.text = texts[i];
+            eventTextLabel.ForceMeshUpdate();
+        }
+    }
+						{% endhighlight %}
+                    </div>
+                </div>
+
             </div>
+
+
             <div class="project-content-background project-text-padding">
                 <h3>Poolhandeling</h3>
                 <p>
@@ -157,6 +210,138 @@ date: "2026-05-01"
                     This pool manager is generic and can handle most objects, and it fixes the need to spawn multiple
                     objects over and over again, and objects can be reused after returning them to the pool.
                 </p>
+
+                <div class="">
+                    <button class="project-button" onclick="ToggleContent('interface')">
+                        <h4>
+                            Pool Interface
+                        </h4>
+                        <img style="transform: rotate(-90deg);" id="img-interface" src="/images/main/chevron-vit-rotate.png" alt="">
+                    </button>
+                    <div style="display: none;" id="interface">
+                        {% highlight "csharp" %}
+public interface IPoolObject
+{
+    public int GameObjectID { get; set; }
+    public int PoolID { get; set; }
+    public bool HasPool {get; set;}
+    public GameObject GetGameObject { get; set; }
+    public Type GetPoolType {get; set;}
+
+    public void InitializeObjectData(GameObject prefab, int poolID);
+}
+						{% endhighlight %}
+                    </div>
+                </div>
+
+                <div class="">
+                    <button class="project-button" onclick="ToggleContent('manager')">
+                        <h4>
+                            Pool Manager
+                        </h4>
+                        <img style="transform: rotate(-90deg);" id="img-manager" src="/images/main/chevron-vit-rotate.png" alt="">
+                    </button>
+                    <div style="display: none;" id="manager">
+                        {% highlight "csharp" %}
+public class PoolData
+{
+...
+    public bool IsRightPool(IPoolObject poolObject)
+    {
+        return PoolType == poolObject.GetPoolType && GameObjectID == poolObject.GameObjectID;
+    }
+
+    public virtual void InitializePool(int PoolID, IPoolObject poolObject, int amount, bool isUiObject, Transform parent)
+    {
+        Pool = new();
+        isUiPool = isUiObject;
+        PoolType = poolObject.GetPoolType;
+        GameObjectID = poolObject.GameObjectID;
+        Pool.Enqueue(poolObject);
+        PopulatePool(PoolID, poolObject, amount, parent);
+    }
+...
+}
+
+public class PoolManager : MonoBehaviour
+{
+    public static PoolManager Instance = null;
+    protected List<PoolData> objectPool = new();
+    [SerializeField] protected Transform pooledObjectParent;
+    [SerializeField] protected Transform uiPooledObjectParent;
+
+...
+    public virtual void WarmupPool(GameObject rootObject, IPoolObject poolObject, int amount)
+    {
+        bool poolExists = false;
+        foreach (PoolData poolData in objectPool)
+        {
+            if (poolData.IsRightPool(poolObject)) { poolExists = true; break; }
+        }
+        if (poolExists) return;
+
+        poolObject.InitializeObjectData(rootObject, objectPool.Count);
+        bool isUiObject = poolObject.GetGameObject.GetComponent<RectTransform>() != null;
+        if (isUiObject && (poolObject.GetGameObject.transform.parent == null || poolObject.GetGameObject.transform.parent != uiPooledObjectParent))
+        {
+            poolObject.GetGameObject.transform.SetParent(uiPooledObjectParent);
+        }
+        else if (poolObject.GetGameObject.transform.parent == null || poolObject.GetGameObject.transform.parent != pooledObjectParent)
+        {
+            poolObject.GetGameObject.transform.SetParent(pooledObjectParent);
+        }
+        
+        PoolData tmpPoolData = new(poolObject.GetPoolType);
+        tmpPoolData.InitializePool(objectPool.Count, poolObject, amount, isUiObject, poolObject.GetGameObject.transform.parent);
+        poolObject.GetGameObject.SetActive(false);
+        objectPool.Add(tmpPoolData);
+    }
+
+    public virtual IPoolObject GetFromQueue(IPoolObject poolObject, int amount = 3)
+    {
+        if (poolObject.PoolID >= objectPool.Count || poolObject.PoolID < 0)
+        {
+            WarmupPool(poolObject.GetGameObject, poolObject, amount);
+        }
+
+        if (!ValidateObjectPoolData(poolObject)) return null;
+
+        if (objectPool[poolObject.PoolID].Pool.Count == 0)
+        {
+            objectPool[poolObject.PoolID].PopulatePool(poolObject.PoolID, poolObject, amount, pooledObjectParent);
+        }
+
+        IPoolObject tmpPoolObject = objectPool[poolObject.PoolID].Pool.Dequeue();
+        tmpPoolObject.GetGameObject.SetActive(true);
+        return tmpPoolObject;
+    }
+
+    public virtual void AddToQueue(IPoolObject poolObject)
+    {
+        if (poolObject.PoolID >= objectPool.Count || poolObject.PoolID < 0)
+        {
+            WarmupPool(poolObject.GetGameObject, poolObject, 5);
+        }
+
+        if (!ValidateObjectPoolData(poolObject)) return;
+
+        poolObject.GetGameObject.SetActive(false);
+        if (objectPool[poolObject.PoolID].isUiPool && (poolObject.GetGameObject.transform.parent == null || poolObject.GetGameObject.transform.parent != uiPooledObjectParent))
+        {
+            poolObject.GetGameObject.transform.SetParent(uiPooledObjectParent);
+        }
+        else if (poolObject.GetGameObject.transform.parent == null || poolObject.GetGameObject.transform.parent != pooledObjectParent)
+        {
+            poolObject.GetGameObject.transform.SetParent(pooledObjectParent);
+        }
+        objectPool[poolObject.PoolID].Pool.Enqueue(poolObject);
+    }
+...
+
+						{% endhighlight %}
+                    </div>
+                </div>
+
             </div>
         </div>
 

@@ -59,9 +59,12 @@ function SetIframeContent()
 
 function ToggleContent(itemId) {
   var element = document.getElementById(itemId);
+  var img = document.getElementById("img-" + itemId);
   if (element.style.display === "none") {
     element.style.display = "block";
+    img.style.transform = "rotate(0)"; 
   } else {
     element.style.display = "none";
+    img.style.transform = "rotate(-90deg)"; 
   }
 }
