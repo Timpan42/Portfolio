@@ -145,6 +145,30 @@
             "topProjectUrl": "videos/Tofu-Mania-Gameplay.mp4",
             "topProjectUrlOrigin": "https://youtu.be/bimosPwGZdg",
             "summary": "What goes into making a good character controller, and what is the work process to get there? I will try to give an introduction to these points and describe the work process that I went through while working on this project. This project is a prototype of a 3D platformer metroidvania, with inspiration from PlayStation 2-era platformers."
+        },
+        {
+            "name": "lia-the-fine-arc",
+            "mainPage": false,
+            "title": "Internship at The Fine Arc",
+            "startDate": "2026/05",
+            "endDate": "currently",
+            "gameTags": "Roguelike | Multiplayer | Lovecraftian",
+            "gameInfo": "Worked on Cthulhu's Reach: Devil Reef, an action roguelike co-op multiplayer game, loosely based on  H. P. Lovecraft's novel The Shadow Over Innsmouth.",
+            "storeTags": "steam",
+            "role": "Programmer",
+            "peopleAmount": "4",
+            "timeWorked": "6 months",
+            "engine": "Unity 2022",
+            "summaryOne": "I interned at The Fine Arc, working mostly on their game Cthulhu's Reach: Devil Reef, an action roguelike co-op multiplayer game loosely based on  H. P. Lovecraft's novel The Shadow Over Innsmouth.",
+            "summaryTwo": "I worked all over the place in the project, from UI to multiplayer, gameplay, and even some design work.",
+            "url": "/projects/lia-the-fine-arc/",
+            "projectUrl": "https://store.steampowered.com/app/2412200/Cthulhus_Reach_Devil_Reef/",
+            "steamUrl": "https://store.steampowered.com/app/2412200/Cthulhus_Reach_Devil_Reef/",
+            "imageFileRoute": "project_img/...",
+            "imageUrl": "/...",
+            "topProjectUrl": "videos/...",
+            "topProjectUrlOrigin": "",
+            "summary": "I interned at The Fine Arc, working mostly on their game Cthulhu's Reach: Devil Reef, an action roguelike co-op multiplayer game loosely based on  H. P. Lovecraft's novel The Shadow Over Innsmouth. I worked all over the place in the project, from UI to multiplayer, gameplay, and even some design work. I had a lot of responsibilities over my work and completing my tasks."
         }
     ]
 }
